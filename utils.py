@@ -83,7 +83,7 @@ def ler_planilha():
 
 
 def salvar_planilha(df_times):
-    writer = pd.ExcelWriter('arquivos\\telelista.xlsx')
+    writer = pd.ExcelWriter('output_file\\telelista.xlsx')
     df_times.to_excel(writer, sheet_name='Escolas', index=False)
     writer.save()
 
