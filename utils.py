@@ -19,7 +19,7 @@ def parse(page):
     if dados > 0:
         for dado in range(dados):
             nome = json_lista["items"]["dados"][dado]["nome"].title()
-            if 'location' in json_lista["items"]["dados"][dado].keys():
+            if 'location' in json_lista["items"]["dados"][dado]:
                 coordenadas = json_lista["items"]["dados"][dado]["location"]
                 coordenadas = f'{coordenadas[1]}, {coordenadas[0]}'
             else:
@@ -44,16 +44,13 @@ def parse(page):
                 cidade = 'Sem Localização'
 
             telefone = json_lista["items"]["dados"][dado]["telefones"]["Clientes"].strip() \
-                if 'Clientes' in json_lista["items"]["dados"][dado]["telefones"].keys() \
-                else 'Não existe'
+                if 'Clientes' in json_lista["items"]["dados"][dado]["telefones"] else 'Não existe'
 
             fornecedor = json_lista["items"]["dados"][dado]["telefones"]["Fornecedores"].strip() \
-                if 'Fornecedores' in json_lista["items"]["dados"][dado]["telefones"].keys() \
-                else 'Não existe'
+                if 'Fornecedores' in json_lista["items"]["dados"][dado]["telefones"] else 'Não existe'
 
             whatsapp = json_lista["items"]["dados"][dado]["telefones"]["Whatsapp"].strip() \
-                if 'Whatsapp' in json_lista["items"]["dados"][dado]["telefones"].keys() \
-                else 'Não existe'
+                if 'Whatsapp' in json_lista["items"]["dados"][dado]["telefones"] else 'Não existe'
 
             items.append([nome, logradouro, bairro, cidade, uf, telefone, whatsapp, fornecedor, coordenadas])
 
